@@ -1,10 +1,10 @@
 ---
 title: Baseline Requirements for the Issuance and Management of Publicly-Trusted TLS Server Certificates
-subtitle: Version 2.0.6
+subtitle: Version 2.0.X
 author:
   - CA/Browser Forum
 
-date: 5-August-2024  
+date: XX-XX-XXXX  
 
 
 
@@ -141,6 +141,7 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 2.0.4 | SC65 | Convert EVGs into RFC 3647 format | 15-March-2024 | 15-May-2024 |
 | 2.0.5 | SC73 | Compromised and weak keys | 3-May-2024 | 1-July-2024 |
 | 2.0.6 | SC75 | Pre-sign linting | 28-June-2024 | 6-August-2024 |
+| 2.0.X | SCXX | Promote agility in the Web PKI | XX-XX-XXXX | XX-XX-XXXX |
 
 \* Effective Date and Additionally Relevant Compliance Date(s)
 
@@ -195,6 +196,12 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 2024-09-15     | 4.3.1.2                   | The CA SHOULD implement a Linting process to test the technical conformity of the to-be-issued Certificate with these Requirements.                                                                                                                                                                                                                                                                                                                      |
 | 2025-03-15     | 4.3.1.2                   | The CA SHALL implement a Linting process to test the technical conformity of the to-be-issued Certificate with these Requirements.                                                                                                                                                                                                                                                                                                                       |
 | 2025-03-15     | 8.7                       | The CA SHOULD use a Linting process to test the technical accuracy of already issued Certificates against the sample set chosen for Self-Audits.                                                                                                                                                                                                                                                                                                         |
+
+| 2025-09-15     | Section 4 (and others)    | CAs SHOULD NOT rely on non-automatable and soon-to-be retired domain validation methods. Sunset unrestricted Subordinate CA profiles.                                                                                                                                                                                                                                                                                                                    |
+| 2026-04-15     | Section 4                 | CAs MUST NOT rely on non-automatable domain validation methods.
+                                                                                                                                                                                                      |
+| 2026-04-15     | Section 7 (and others)    | TLS Server Authentication Certificates issued MUST NOT have a Validity Period greater than 90 days. Subordinate CA Certificates issued MUST NOT have a 
+Validity Period greater than 1096 days.                                                                                                                                                               |
 
 ## 1.3 PKI Participants
 
@@ -410,6 +417,8 @@ The Definitions found in the CA/Browser Forum's Network and Certificate System S
 **Public Key Infrastructure**: A set of hardware, software, people, procedures, rules, policies, and obligations used to facilitate the trustworthy creation, issuance, management, and use of Certificates and keys based on Public Key Cryptography.
 
 **Publicly-Trusted Certificate**: A Certificate that is trusted by virtue of the fact that its corresponding Root Certificate is distributed as a trust anchor in widely-available application software.
+
+**Published Revocation**: All available servers responsible for providing Online Certificate Status Protocol (OCSP) responses or Certificate Revocation Lists (CRLs) indicate that the certificate in question has been revoked.
 
 **P-Label**: A XN-Label that contains valid output of the Punycode algorithm (as defined in RFC 3492, Section 6.3) from the fifth and subsequent positions.
 
@@ -737,6 +746,8 @@ The CA MAY resend the email, fax, SMS, or postal mail in its entirety, including
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values, in which case the CA MUST follow its CPS.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.3 Phone Contact with Domain Contact
@@ -758,6 +769,8 @@ The Random Value SHALL be unique in each email.
 The email MAY be re-sent in its entirety, including the re-use of the Random Value, provided that its entire contents and recipient SHALL remain unchanged.
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
+
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -802,6 +815,8 @@ This method has been retired and MUST NOT be used.
 
 Confirming the Applicant's control over the FQDN by validating the Applicant is the Domain Contact. This method may only be used if the CA is also the Domain Name Registrar, or an Affiliate of the Registrar, of the Base Domain Name.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026.
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.13 Email to DNS CAA Contact
@@ -812,6 +827,8 @@ Each email MAY confirm control of multiple FQDNs, provided that each email addre
 
 The Random Value SHALL be unique in each email. The email MAY be re-sent in its entirety, including the re-use of the Random Value, provided that its entire contents and recipient(s) SHALL remain unchanged. The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.14 Email to DNS TXT Contact
@@ -821,6 +838,8 @@ Confirming the Applicant's control over the FQDN by sending a Random Value via e
 Each email MAY confirm control of multiple FQDNs, provided that each email address is DNS TXT Record Email Contact for each Authorization Domain Name being validated. The same email MAY be sent to multiple recipients as long as all recipients are DNS TXT Record Email Contacts for each Authorization Domain Name being validated.
 
 The Random Value SHALL be unique in each email. The email MAY be re-sent in its entirety, including the re-use of the Random Value, provided that its entire contents and recipient(s) SHALL remain unchanged. The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
+
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -834,6 +853,8 @@ In the event of reaching voicemail, the CA may leave the Random Value and the AD
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.16 Phone Contact with DNS TXT Record Phone Contact
@@ -846,6 +867,8 @@ In the event of reaching voicemail, the CA may leave the Random Value and the AD
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.17 Phone Contact with DNS CAA Phone Contact
@@ -857,6 +880,8 @@ The CA MUST NOT be transferred or request to be transferred as this phone number
 In the event of reaching voicemail, the CA may leave the Random Value and the ADN(s) being validated. The Random Value MUST be returned to the CA to approve the request.
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
+
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -950,6 +975,8 @@ The CA MAY resend the email, fax, SMS, or postal mail in its entirety, including
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values, in which case the CA MUST follow its CPS.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 ##### 3.2.2.5.3 Reverse Address Lookup
 
 Confirming the Applicant’s control over the IP Address by obtaining a Domain Name associated with the IP Address through a reverse-IP lookup on the IP Address and then verifying control over the FQDN using a method permitted under [Section 3.2.2.4](#3224-validation-of-domain-authorization-or-control).
@@ -969,6 +996,8 @@ In the event that someone other than an IP Address Contact is reached, the CA MA
 In the event of reaching voicemail, the CA may leave the Random Value and the IP Address(es) being validated. The Random Value MUST be returned to the CA to approve the request.
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
+
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
 
 ##### 3.2.2.5.6 ACME “http-01” method for IP Addresses
 
@@ -1084,7 +1113,7 @@ The certificate request MAY include all factual information about the Applicant 
 
 Applicant information MUST include, but not be limited to, at least one Fully-Qualified Domain Name or IP address to be included in the Certificate's `subjectAltName` extension.
 
-[Section 6.3.2](#632-certificate-operational-periods-and-key-pair-usage-periods) limits the validity period of Subscriber Certificates. The CA MAY use the documents and data provided in [Section 3.2](#32-initial-identity-validation) to verify certificate information, or may reuse previous validations themselves, provided that the CA obtained the data or document from a source specified under [Section 3.2](#32-initial-identity-validation) or completed the validation itself no more than 825 days prior to issuing the Certificate. For validation of Domain Names and IP Addresses according to Section 3.2.2.4 and 3.2.2.5, any data, document, or completed validation used MUST be obtained no more than 398 days prior to issuing the Certificate.
+[Section 6.3.2](#632-certificate-operational-periods-and-key-pair-usage-periods) limits the validity period of Subscriber Certificates. The CA MAY use the documents and data provided in [Section 3.2](#32-initial-identity-validation) to verify certificate information, or may reuse previous validations themselves, provided that the CA obtained the data or document from a source specified under [Section 3.2](#32-initial-identity-validation) or completed the validation itself no more than 398 days prior to issuing the Certificate. For validation of Domain Names and IP Addresses according to Section 3.2.2.4 and 3.2.2.5, any data, document, or completed validation used MUST be obtained no more than 90 days prior to issuing the Certificate.
 
 In no case may a prior validation be reused if any data or document used in the prior validation was obtained more than the maximum time permitted for reuse of the data or document prior to issuing the Certificate.
 
@@ -1299,7 +1328,7 @@ The Issuing CA SHALL revoke a Subordinate CA Certificate within seven (7) days i
 
 ### 4.9.2 Who can request revocation
 
-The Subscriber, RA, or Issuing CA can initiate revocation. Additionally, Subscribers, Relying Parties, Application Software Suppliers, and other third parties may submit Certificate Problem Reports informing the issuing CA of reasonable cause to revoke the certificate.
+The Subscriber, RA, or Issuing CA can initiate revocation. Additionally, Subscribers, Relying Parties, Application Software Suppliers, and other third parties may submit Certificate Problem Reports informing the issuing CA of reasonable cause to revoke the certificate. A CA independently becoming aware of confirmed or suspected circumstances that might neccessitate revocation, either triggered by the use of linting tools or other discovered via internal CA processes (e.g., self-audits) should be treated the same as a third party Certificate Problem Report.
 
 ### 4.9.3 Procedure for revocation request
 
@@ -1313,14 +1342,21 @@ No stipulation.
 
 ### 4.9.5 Time within which CA must process the revocation request
 
-Within 24 hours after receiving a Certificate Problem Report, the CA SHALL investigate the facts and circumstances related to a Certificate Problem Report and provide a preliminary report on its findings to both the Subscriber and the entity who filed the Certificate Problem Report.
-After reviewing the facts and circumstances, the CA SHALL work with the Subscriber and any entity reporting the Certificate Problem Report or other revocation-related notice to establish whether or not the certificate will be revoked, and if so, a date which the CA will revoke the certificate. The period from receipt of the Certificate Problem Report or revocation-related notice to published revocation MUST NOT exceed the time frame set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate). The date selected by the CA SHOULD consider the following criteria:
+Within 24 hours after receiving a Certificate Problem Report, the CA SHALL investigate the facts and circumstances related to the report and provide a preliminary report on its findings to both the Subscriber(s) and the entity who filed the Certificate Problem Report.
+
+A Certificate Problem Report is considered "actionable" if it includes:
+- either certificate serial number(s) or hash(es) of at least one certificate affected by issue subject of the Certificate Problem Report, and
+- a description of how the certificate(s) in question violates these requirements or a CAs own policies or otherwise must be revoked.
+
+After reviewing the facts and circumstances of a Certificate Problem Report, the CA SHALL work with the Subscriber and any entity reporting the actionable Certificate Problem Report or other revocation-related notice to establish whether or not the certificate will be revoked, and if so, a date which the CA will revoke the certificate. The period from receipt of the actionable Certificate Problem Report or revocation-related notice to published revocation MUST NOT exceed the time frame set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate). The date selected by the CA SHOULD consider the following criteria:
 
 1. The nature of the alleged problem (scope, context, severity, magnitude, risk of harm);
 2. The consequences of revocation (direct and collateral impacts to Subscribers and Relying Parties);
 3. The number of Certificate Problem Reports received about a particular Certificate or Subscriber;
 4. The entity making the complaint (for example, a complaint from a law enforcement official that a Web site is engaged in illegal activities should carry more weight than a complaint from a consumer alleging that they didn't receive the goods they ordered); and
 5. Relevant legislation.
+
+Unless the CA obtains evidence that affirmatively concludes revocation is not required, the CA MUST proceed with revocation and in doing so MUST NOT exceed the revocation time frames set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate).
 
 ### 4.9.6 Revocation checking requirement for relying parties
 
@@ -1824,6 +1860,10 @@ The CA SHALL protect its Private Key in a system or device that has been validat
 
 ### 6.3.2 Certificate operational periods and key pair usage periods
 
+Subscriber Certificates issued on or after 15 September 2025 SHOULD NOT have a Validity Period greater than 90 days. 
+
+Subscriber Certificates issued on or after 15 April 2026 MUST NOT have a Validity Period greater than 90 days. 
+
 Subscriber Certificates issued on or after 1 September 2020 SHOULD NOT have a Validity Period greater than 397 days and MUST NOT have a Validity Period greater than 398 days. 
 
 For the purpose of calculations, a day is measured as 86,400 seconds. Any amount of time greater than this, including fractional seconds and/or leap seconds, shall represent an additional day. For this reason, Subscriber Certificates SHOULD NOT be issued for the maximum permissible time by default, in order to account for such adjustments.
@@ -1972,7 +2012,7 @@ Before issuing a Cross-Certified Subordinate CA, the Issuing CA MUST confirm tha
 | __Field__   | __Minimum__ | __Maximum__ |
 | --          | ----        | ----        |
 | `notBefore` | The earlier of one day prior to the time of signing or the earliest `notBefore` date of the existing CA Certificate(s) | The time of signing |
-| `notAfter`  | The time of signing | Unspecified |
+| `notAfter`  | The time of signing | The time of signing plus 1096 days |
 
 ##### 7.1.2.2.2 Cross-Certified Subordinate CA Naming
 
@@ -1984,6 +2024,7 @@ The `subject` MUST comply with the requirements of [Section 7.1.4](#714-name-for
 
 | __Extension__                     | __Presence__    | __Critical__          | __Description__ |
 | ----                              | -               | -                     | ----- |
+| `extKeyUsage`                     | MUST[^eku_ca]   | N                     | See [Section 7.1.2.2.5](#71225-cross-certified-subordinate-ca-extended-key-usage---restricted) |
 | `authorityKeyIdentifier`          | MUST            | N                     | See [Section 7.1.2.11.1](#712111-authority-key-identifier) |
 | `basicConstraints`                | MUST            | Y                     | See [Section 7.1.2.10.4](#712104-ca-certificate-basic-constraints) |
 | `certificatePolicies`             | MUST            | N                     | See [Section 7.1.2.10.5](#712105-ca-certificate-certificate-policies) |
@@ -1995,42 +2036,13 @@ The `subject` MUST comply with the requirements of [Section 7.1.4](#714-name-for
 | Signed Certificate Timestamp List | MAY             | N                     | See [Section 7.1.2.11.3](#712113-signed-certificate-timestamp-list) |
 | Any other extension               | NOT RECOMMENDED | -                     | See [Section 7.1.2.11.5](#712115-other-extensions) |
 
-In addition to the above, extKeyUsage extension requirements vary based on the relationship between the Issuer and Subject organizations represented in the Cross-Certificate.
-
-The extKeyUsage extension MAY be "unrestricted" as described in the following table if:
-- the organizationName represented in the Issuer and Subject names of the corresponding certificate are either:
-   - the same, or
-   - the organizationName represented in the Subject name is an affiliate of the organizationName represented in the Issuer name
-- the corresponding CA represented by the Subject of the Cross-Certificate is operated by the same organization as the Issuing CA or an Affiliate of the Issuing CA organization. 
-
-Table: Cross-Certified Subordinate CA with Unrestricted EKU
-
-| __Extension__                     | __Presence__    | __Critical__          | __Description__ |
-| ----                              | -               | -                     | ----- |
-| `extKeyUsage`                     | SHOULD[^eku_ca] | N                     | See [Section 7.1.2.2.4](#71224-cross-certified-subordinate-ca-extended-key-usage---unrestricted) |
-
-In all other cases, the extKeyUsage extension MUST be "restricted" as described in the following table:
-
-Table: Cross-Certified Subordinate CA with Restricted EKU
-
-| __Extension__                     | __Presence__    | __Critical__          | __Description__ |
-| ----                              | -               | -                     | ----- |
-| `extKeyUsage`                     | MUST[^eku_ca]   | N                     | See [Section 7.1.2.2.5](#71225-cross-certified-subordinate-ca-extended-key-usage---restricted) |
-
 [^eku_ca]: While [RFC 5280, Section 4.2.1.12](https://tools.ietf.org/html/rfc5280#section-4.2.1.13) notes that this extension will generally only appear within end-entity certificates, these Requirements make use of this extension to further protect relying parties by limiting the scope of CA Certificates, as implemented by a number of Application Software Suppliers.
 
 [^name_constraints]: See [Section 7.1.2.10.8](#712108-ca-certificate-name-constraints) for further requirements, including regarding criticality of this extension.
 
 ##### 7.1.2.2.4 Cross-Certified Subordinate CA Extended Key Usage - Unrestricted
 
-Table: Unrestricted Extended Key Usage Purposes (Affiliated Cross-Certified CA)
-
-| __Key Purpose__        | __Description__ |
-| ---                    | -------         |
-| `anyExtendedKeyUsage`  | The special extended key usage to indicate there are no restrictions applied. If present, this MUST be the only key usage present. |
-| Any other value        | CAs MUST NOT include any other key usage with the `anyExtendedKeyUsage` key usage present. |
-
-Alternatively, if the Issuing CA does not use this form, then the Extended Key Usage extension, if present, MUST be encoded as specified in [Section 7.1.2.2.5](#71225-cross-certified-subordinate-ca-extended-key-usage---restricted).
+Effective September 15, 2025, this profile has been sunset.
 
 ##### 7.1.2.2.5 Cross-Certified Subordinate CA Extended Key Usage - Restricted
 
@@ -2039,157 +2051,20 @@ Table: Restricted TLS Cross-Certified Subordinate CA Extended Key Usage Purposes
 | __Key Purpose__        | __Description__ |
 | ---                    | -------         |
 | `id-kp-serverAuth`     | MUST be present.|
-| `id-kp-clientAuth`     | MAY be present.|
+| `id-kp-clientAuth`     | MUST NOT be present.|
 | `id-kp-emailProtection`| MUST NOT be present.|
 | `id-kp-codeSigning`    | MUST NOT be present.|
 | `id-kp-timeStamping`   | MUST NOT be present.|
 | `anyExtendedKeyUsage`  | MUST NOT be present.|
-| Any other value        | NOT RECOMMENDED.|
-
-Table: Restricted Non-TLS Cross-Certified Subordinate CA Extended Key Usage Purposes (i.e., for restricted Cross-Certified Subordinate CAs not issuing TLS certificates directly or transitively)
-
-| __Key Purpose__        | __Description__ |
-| ---                    | -------         |
-| `id-kp-serverAuth`     | MUST NOT be present.|
-| `anyExtendedKeyUsage`  | MUST NOT be present.|
-| Any other value        | MAY be present.|
-
-Each included Extended Key Usage key usage purpose:
-
-  1. MUST apply in the context of the public Internet (e.g. MUST NOT be for a service that is only valid in a privately managed network), unless:
-     a. the key usage purpose falls within an OID arc for which the Applicant demonstrates ownership; or,
-     b. the Applicant can otherwise demonstrate the right to assert the key usage purpose in a public context.
-  2. MUST NOT include semantics that will mislead the Relying Party about the certificate information verified by the CA, such as including a key usage purpose asserting storage on a smart card, where the CA is not able to verify that the corresponding Private Key is confined to such hardware due to remote issuance.
-  3. MUST be verified by the Issuing CA (i.e. the Issuing CA MUST verify the Cross-Certified Subordinate CA is authorized to assert the key usage purpose).
-
-CAs MUST NOT include additional key usage purposes unless the CA is aware of a reason for including the key usage purpose in the Certificate.
+| Any other value        | MUST NOT be present.|
 
 #### 7.1.2.3 Technically Constrained Non-TLS Subordinate CA Certificate Profile
 
-This Certificate Profile MAY be used when issuing a CA Certificate that will be considered Technically Constrained, and which will not be used to issue TLS certificates directly or transitively.
-
-| __Field__                  | __Description__ |
-| ---                        | ------          |
-| `tbsCertificate`           | |
-|     `version`              | MUST be v3(2) |
-|     `serialNumber`         | MUST be a non-sequential number greater than zero (0) and less than 2¹⁵⁹ containing at least 64 bits of output from a CSPRNG. |
-|     `signature`            | See [Section 7.1.3.2](#7132-signature-algorithmidentifier) |
-|     `issuer`               | MUST be byte-for-byte identical to the `subject` field of the Issuing CA. See [Section 7.1.4.1](#7141-name-encoding) |
-|     `validity`             | See [Section 7.1.2.10.1](#712101-ca-certificate-validity) |
-|     `subject`              | See [Section 7.1.2.10.2](#712102-ca-certificate-naming) |
-|     `subjectPublicKeyInfo` | See [Section 7.1.3.1](#7131-subjectpublickeyinfo) |
-|     `issuerUniqueID`       | MUST NOT be present |
-|     `subjectUniqueID`      | MUST NOT be present |
-|     `extensions`           | See [Section 7.1.2.3.1](#71231-technically-constrained-non-tls-subordinate-ca-extensions) |
-| `signatureAlgorithm`       | Encoded value MUST be byte-for-byte identical to the `tbsCertificate.signature`. |
-| `signature`                | |
-
-##### 7.1.2.3.1 Technically Constrained Non-TLS Subordinate CA Extensions
-
-| __Extension__                     | __Presence__    | __Critical__          | __Description__ |
-| ----                              | -               | -                     | ----- |
-| `authorityKeyIdentifier`          | MUST            | N                     | See [Section 7.1.2.11.1](#712111-authority-key-identifier) |
-| `basicConstraints`                | MUST            | Y                     | See [Section 7.1.2.10.4](#712104-ca-certificate-basic-constraints) |
-| `crlDistributionPoints`           | MUST            | N                     | See [Section 7.1.2.11.2](#712112-crl-distribution-points) |
-| `keyUsage`                        | MUST            | Y                     | See [Section 7.1.2.10.7](#712107-ca-certificate-key-usage) |
-| `subjectKeyIdentifier`            | MUST            | N                     | See [Section 7.1.2.11.4](#712114-subject-key-identifier) |
-| `extKeyUsage`                     | MUST[^eku_ca]   | N                     | See [Section 7.1.2.3.3](#71233-technically-constrained-non-tls-subordinate-ca-extended-key-usage)|
-| `authorityInformationAccess`      | SHOULD          | N                     | See [Section 7.1.2.10.3](#712103-ca-certificate-authority-information-access) |
-| `certificatePolicies`             | MAY             | N                     | See [Section 7.1.2.3.2](#71232-technically-constrained-non-tls-subordinate-ca-certificate-policies) |
-| `nameConstraints`                 | MAY             | \*[^name_constraints] | See [Section 7.1.2.10.8](#712108-ca-certificate-name-constraints) |
-| Signed Certificate Timestamp List | MAY             | N                     | See [Section 7.1.2.11.3](#712113-signed-certificate-timestamp-list) |
-| Any other extension               | NOT RECOMMENDED | -                     | See [Section 7.1.2.11.5](#712115-other-extensions) |
-
-##### 7.1.2.3.2 Technically Constrained Non-TLS Subordinate CA Certificate Policies
-
-If present, the Certificate Policies extension MUST be formatted as one of the two tables below:
-
-Table: No Policy Restrictions (Affiliated CA)
-
-| __Field__          | __Presence__    | __Contents__ |
-| ---                | -               | ------       |
-| `policyIdentifier` | MUST            | When the Issuing CA wishes to express that there are no policy restrictions, the Subordinate CA MUST be an Affiliate of the Issuing CA. The Certificate Policies extension MUST contain only a single `PolicyInformation` value, which MUST contain the `anyPolicy` Policy Identifier. |
-|     `anyPolicy`    | MUST            | |
-| `policyQualifiers` | NOT RECOMMENDED | If present, MUST contain only permitted `policyQualifiers` from the table below. |
-
-
-Table: Policy Restricted
-
-| __Field__                | __Presence__    | __Contents__ |
-| ---                      | -               | ------       |
-| `policyIdentifier`       | MUST            | One of the following policy identifiers: |
-|     A [Reserved Certificate Policy Identifier](#7161-reserved-certificate-policy-identifiers) | MUST NOT | |
-|     `anyPolicy`          | MUST NOT        | The `anyPolicy` Policy Identifier MUST NOT be present. |
-|     Any other identifier | MAY             | If present, MUST be documented by the CA in its Certificate Policy and/or Certification Practice Statement. |
-| `policyQualifiers`       | NOT RECOMMENDED | If present, MUST contain only permitted `policyQualifiers` from the table below. |
-
-
-Table: Permitted `policyQualifiers`
-
-| __Qualifier ID__                     | __Presence__ | __Field Type__ |  __Contents__ |
-| ---                                  | -            | -              | -----         |
-| `id-qt-cps` (OID: 1.3.6.1.5.5.7.2.1) | MAY          | `IA5String`    | The HTTP or HTTPS URL for the Issuing CA's Certificate Policies, Certification Practice Statement, Relying Party Agreement, or other pointer to online policy information provided by the Issuing CA. |
-| Any other qualifier                  | MUST NOT     | -              | -             |
-
-
-##### 7.1.2.3.3 Technically Constrained Non-TLS Subordinate CA Extended Key Usage
-
-The Issuing CA MUST verify that the Subordinate CA Certificate is authorized to issue certificates for each included extended key usage purpose. Multiple, independent key purposes (e.g. `id-kp-timeStamping` and `id-kp-codeSigning`) are NOT RECOMMENDED.
-
-| __Key Purpose__                    | __OID__                 | __Presence__ |
-| ----                               | ----                    | -            |
-| `id-kp-serverAuth`                 | 1.3.6.1.5.5.7.3.1       | MUST NOT     |
-| `id-kp-OCSPSigning`                | 1.3.6.1.5.5.7.3.9       | MUST NOT     |
-| `anyExtendedKeyUsage`              | 2.5.29.37.0             | MUST NOT     |
-| Precertificate Signing Certificate | 1.3.6.1.4.1.11129.2.4.4 | MUST NOT     |
-| Any other value                    | -                       | MAY          |
+Effective September 15, 2025, this profile has been sunset.
 
 #### 7.1.2.4 Technically Constrained Precertificate Signing CA Certificate Profile
 
-This Certificate Profile MUST be used when issuing a CA Certificate that will be used as a Precertificate Signing CA, as described in [RFC 6962, Section 3.1](https://tools.ietf.org/html/rfc6962#section-3.1). If a CA Certificate conforms to this profile, it is considered Technically Constrained.
-
-A Precertificate Signing CA MUST only be used to sign Precertificates, as defined in [Section 7.1.2.9](#7129-precertificate-profile). When a Precertificate Signing CA issues a Precertificate, it shall be interpreted as if the Issuing CA of the Precertificate Signing CA has issued a Certificate with a matching `tbsCertificate` of the Precertificate, after applying the modifications specified in [RFC 6962, Section 3.2](https://tools.ietf.org/html/rfc6962#section-3.2).
-
-As noted in RFC 6962, Section 3.2, the `signature` field of a Precertificate is not altered as part of these modifications. As such, the Precertificate Signing CA MUST use the same signature algorithm as the Issuing CA when issuing Precertificates, and, correspondingly, MUST use a public key of the same public key algorithm as the Issuing CA, although MAY use a different CA Key Pair.
-
-| __Field__                  | __Description__ |
-| ---                        | ------          |
-| `tbsCertificate`           | |
-|     `version`              | MUST be v3(2) |
-|     `serialNumber`         | MUST be a non-sequential number greater than zero (0) and less than 2¹⁵⁹ containing at least 64 bits of output from a CSPRNG. |
-|     `signature`            | See [Section 7.1.3.2](#7132-signature-algorithmidentifier) |
-|     `issuer`               | MUST be byte-for-byte identical to the `subject` field of the Issuing CA. See [Section 7.1.4.1](#7141-name-encoding) |
-|     `validity`             | See [Section 7.1.2.10.1](#712101-ca-certificate-validity) |
-|     `subject`              | See [Section 7.1.2.10.2](#712102-ca-certificate-naming) |
-|     `subjectPublicKeyInfo` | The algorithm identifier MUST be byte-for-byte identical to the algorithm identifier of the `subjectPublicKeyInfo` field of the Issuing CA. See [Section 7.1.3.1](#7131-subjectpublickeyinfo) |
-|     `issuerUniqueID`       | MUST NOT be present |
-|     `subjectUniqueID`      | MUST NOT be present |
-|     `extensions`           | See [Section 7.1.2.4.1](#71241-technically-constrained-precertificate-signing-ca-extensions) |
-| `signatureAlgorithm`       | Encoded value MUST be byte-for-byte identical to the `tbsCertificate.signature`. |
-| `signature`                | |
-
-##### 7.1.2.4.1 Technically Constrained Precertificate Signing CA Extensions
-
-| __Extension__                     | __Presence__    | __Critical__          | __Description__ |
-| ----                              | -               | -                     | ----- |
-| `authorityKeyIdentifier`          | MUST            | N                     | See [Section 7.1.2.11.1](#712111-authority-key-identifier) |
-| `basicConstraints`                | MUST            | Y                     | See [Section 7.1.2.10.4](#712104-ca-certificate-basic-constraints) |
-| `certificatePolicies`             | MUST            | N                     | See [Section 7.1.2.10.5](#712105-ca-certificate-certificate-policies) |
-| `crlDistributionPoints`           | MUST            | N                     | See [Section 7.1.2.11.2](#712112-crl-distribution-points) |
-| `keyUsage`                        | MUST            | Y                     | See [Section 7.1.2.10.7](#712107-ca-certificate-key-usage) |
-| `subjectKeyIdentifier`            | MUST            | N                     | See [Section 7.1.2.11.4](#712114-subject-key-identifier) |
-| `extKeyUsage`                     | MUST[^eku_ca]   | N                     | See [Section 7.1.2.4.2](#71242-technically-constrained-precertificate-signing-ca-extended-key-usage) |
-| `authorityInformationAccess`      | SHOULD          | N                     | See [Section 7.1.2.10.3](#712103-ca-certificate-authority-information-access) |
-| `nameConstraints`                 | MAY             | \*[^name_constraints] | See [Section 7.1.2.10.8](#712108-ca-certificate-name-constraints) |
-| Signed Certificate Timestamp List | MAY             | N                     | See [Section 7.1.2.11.3](#712113-signed-certificate-timestamp-list) |
-| Any other extension               | NOT RECOMMENDED | -                     | See [Section 7.1.2.11.5](#712115-other-extensions) |
-
-##### 7.1.2.4.2 Technically Constrained Precertificate Signing CA Extended Key Usage
-
-| __Key Purpose__                    | __OID__                 | __Presence__  |
-| ----                               | ----                    | -             |
-| Precertificate Signing Certificate | 1.3.6.1.4.1.11129.2.4.4 | MUST          |
-| Any other value                    | -                       | MUST NOT      |
+Effective September 15, 2025, this profile has been sunset.
 
 #### 7.1.2.5 Technically Constrained TLS Subordinate CA Certificate Profile
 
@@ -2505,14 +2380,14 @@ Table: Permitted `policyQualifiers`
 | __Key Purpose__                    | __OID__                 | __Presence__    |
 | ----                               | ----                    | -               |
 | `id-kp-serverAuth`                 | 1.3.6.1.5.5.7.3.1       | MUST            |
-| `id-kp-clientAuth`                 | 1.3.6.1.5.5.7.3.2       | MAY             |
+| `id-kp-clientAuth`                 | 1.3.6.1.5.5.7.3.2       | MUST NOT        |
 | `id-kp-codeSigning`                | 1.3.6.1.5.5.7.3.3       | MUST NOT        |
 | `id-kp-emailProtection`            | 1.3.6.1.5.5.7.3.4       | MUST NOT        |
 | `id-kp-timeStamping`               | 1.3.6.1.5.5.7.3.8       | MUST NOT        |
 | `id-kp-OCSPSigning`                | 1.3.6.1.5.5.7.3.9       | MUST NOT        |
 | `anyExtendedKeyUsage`              | 2.5.29.37.0             | MUST NOT        |
 | Precertificate Signing Certificate | 1.3.6.1.4.1.11129.2.4.4 | MUST NOT        |
-| Any other value                    | -                       | NOT RECOMMENDED |
+| Any other value                    | -                       | MUST NOT        |
 
 ##### 7.1.2.7.11 Subscriber Certificate Key Usage
 
@@ -2525,14 +2400,14 @@ Table: Key Usage for RSA Public Keys
 | `digitalSignature` | Y             | SHOULD           |
 | `nonRepudiation`   | N             | --               |
 | `keyEncipherment`  | Y             | MAY              |
-| `dataEncipherment` | Y             | NOT RECOMMENDED  |
+| `dataEncipherment` | Y             | --               |
 | `keyAgreement`     | N             | --               |
 | `keyCertSign`      | N             | --               |
 | `cRLSign`          | N             | --               |
 | `encipherOnly`     | N             | --               |
 | `decipherOnly`     | N             | --               |
 
-**Note**: At least one Key Usage MUST be set for RSA Public Keys. The `digitalSignature` bit is REQUIRED for use with modern protocols, such as TLS 1.3, and secure ciphersuites, while the `keyEncipherment` bit MAY be asserted to support older protocols, such as TLS 1.2, when using insecure ciphersuites. Subscribers MAY wish to ensure key separation to limit the risk from such legacy protocols, and thus a CA MAY issue a Subscriber certificate that only asserts the `keyEncipherment` bit. For most Subscribers, the `digitalSignature` bit is sufficient, while Subscribers that want to mix insecure and secure ciphersuites with the same algorithm may choose to assert both `digitalSignature` and `keyEncipherment` within the same certificate, although this is NOT RECOMMENDED. The `dataEncipherment` bit is currently permitted, although setting it is NOT RECOMMENDED, as it is a Pending Prohibition (https://github.com/cabforum/servercert/issues/384).
+**Note**: At least one Key Usage MUST be set for RSA Public Keys. The `digitalSignature` bit is REQUIRED for use with modern protocols, such as TLS 1.3, and secure ciphersuites, while the `keyEncipherment` bit MAY be asserted to support older protocols, such as TLS 1.2, when using insecure ciphersuites. Subscribers MAY wish to ensure key separation to limit the risk from such legacy protocols, and thus a CA MAY issue a Subscriber certificate that only asserts the `keyEncipherment` bit. For most Subscribers, the `digitalSignature` bit is sufficient, while Subscribers that want to mix insecure and secure ciphersuites with the same algorithm may choose to assert both `digitalSignature` and `keyEncipherment` within the same certificate, although this is NOT RECOMMENDED. 
 
 Table: Key Usage for ECC Public Keys
 
@@ -2542,13 +2417,11 @@ Table: Key Usage for ECC Public Keys
 | `nonRepudiation`   | N             | --               |
 | `keyEncipherment`  | N             | --               |
 | `dataEncipherment` | N             | --               |
-| `keyAgreement`     | Y             | NOT RECOMMENDED  |
+| `keyAgreement`     | Y             | --               |
 | `keyCertSign`      | N             | --               |
 | `cRLSign`          | N             | --               |
 | `encipherOnly`     | N             | --               |
 | `decipherOnly`     | N             | --               |
-
-**Note**: The `keyAgreement` bit is currently permitted, although setting it is NOT RECOMMENDED, as it is a Pending Prohibition (https://github.com/cabforum/servercert/issues/384).
 
 ##### 7.1.2.7.12 Subscriber Certificate Subject Alternative Name
 
@@ -2595,7 +2468,7 @@ If the Issuing CA does not directly sign OCSP responses, it MAY make use of an O
 | __Field__   | __Minimum__                          | __Maximum__ |
 | --          | ----                                 | ----        |
 | `notBefore` | One day prior to the time of signing | The time of signing |
-| `notAfter`  | The time of signing                  | Unspecified |
+| `notAfter`  | The time of signing | The time of signing plus 1096 days |
 
 ##### 7.1.2.8.2 OCSP Responder Extensions
 
@@ -2796,7 +2669,7 @@ This section contains several fields that are common among multiple CA Certifica
 | __Field__   | __Minimum__ | __Maximum__ |
 | --          | ----        | ----        |
 | `notBefore` | One day prior to the time of signing | The time of signing |
-| `notAfter`  | The time of signing | Unspecified |
+| `notAfter`  | The time of signing | The time of signing plus 1096 days |
 
 ##### 7.1.2.10.2 CA Certificate Naming
 
@@ -3362,7 +3235,9 @@ The CA SHALL at all times:
 
 ## 8.1 Frequency or circumstances of assessment
 
-Certificates that are capable of being used to issue new certificates MUST either be Technically Constrained in line with [Section 7.1.2.3](#7123-technically-constrained-non-tls-subordinate-ca-certificate-profile), [Section 7.1.2.4](#7124-technically-constrained-precertificate-signing-ca-certificate-profile), or [Section 7.1.2.5](#7125-technically-constrained-tls-subordinate-ca-certificate-profile), as well as audited in line with [Section 8.7](#87-self-audits) only, or Unconstrained and fully audited in line with all remaining requirements from this section. A Certificate is deemed as capable of being used to issue new certificates if it contains an X.509v3 `basicConstraints` extension, with the `cA` boolean set to true and is therefore by definition a Root CA Certificate or a Subordinate CA Certificate.
+Certificates issued on or after September 15, 2025 MUST be fully audited in line with this section.
+
+Certificates issued before September 15, 2025 that are capable of being used to issue new certificates MUST be Technically Constrained in line with [Section 7.1.2.3](#7123-technically-constrained-non-tls-subordinate-ca-certificate-profile), [Section 7.1.2.4](#7124-technically-constrained-precertificate-signing-ca-certificate-profile), or [Section 7.1.2.5](#7125-technically-constrained-tls-subordinate-ca-certificate-profile), as well as audited in line with [Section 8.7](#87-self-audits) only, or Unconstrained and fully audited in line with all remaining requirements from this section. A Certificate is deemed as capable of being used to issue new certificates if it contains an X.509v3 `basicConstraints` extension, with the `cA` boolean set to true and is therefore by definition a Root CA Certificate or a Subordinate CA Certificate.
 
 The period during which the CA issues Certificates SHALL be divided into an unbroken sequence of audit periods. An audit period MUST NOT exceed one year in duration.
 

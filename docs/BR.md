@@ -2,7 +2,6 @@ TODOs
 - Kill concept of technically-constrained. All CAs will be constrained by EKU. Some CAs may have name-constraints. Everybody gets audited the same.
 - should long form?
 - kill dataEncipherment for RSA: https://github.com/cabforum/servercert/issues/384
-- fix problem reports
 
 
 
@@ -2378,7 +2377,7 @@ Table: Key Usage for RSA Public Keys
 | `digitalSignature` | Y             | SHOULD           |
 | `nonRepudiation`   | N             | --               |
 | `keyEncipherment`  | Y             | MAY              |
-| `dataEncipherment` | Y             | NOT RECOMMENDED  |
+| `dataEncipherment` | N             | --               |
 | `keyAgreement`     | N             | --               |
 | `keyCertSign`      | N             | --               |
 | `cRLSign`          | N             | --               |

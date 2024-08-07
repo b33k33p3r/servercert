@@ -2,6 +2,7 @@ TODOs
 - Kill concept of technically-constrained. All CAs will be constrained by EKU. Some CAs may have name-constraints. Everybody gets audited the same.
 - should long form?
 - kill dataEncipherment for RSA: https://github.com/cabforum/servercert/issues/384
+- fix problem reports
 
 
 
@@ -147,7 +148,7 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 2.0.3 | SC69 | Clarify router and firewall logging requirements | 13-March-2024 | 15-April-2024 |
 | 2.0.4 | SC65 | Convert EVGs into RFC 3647 format | 15-March-2024 | 15-May-2024 |
 | 2.0.5 | SC73 | Compromised and weak keys | 3-May-2024 | 1-July-2024 |
-| 2.0.X | SCXX | Promote Agility in the Web PKI | XX-XX-XXXX | XX-XX-XXXX |
+| 2.0.X | SCXX | Promote agility in the Web PKI | XX-XX-XXXX | XX-XX-XXXX |
 
 
 \* Effective Date and Additionally Relevant Compliance Date(s)
@@ -201,7 +202,9 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 2023-09-15 | Section 7 (and others) | CAs MUST use the updated Certificate Profiles passed in Version 2.0.0 |
 | 2024-03-15 | 4.9.7 | CAs MUST generate and publish CRLs. |
 | 2024-03-15 | 4.9.7 | CAs MUST generate and publish CRLs. |
-| 2026-09-15 | Section 7 (and others) | TLS Server Authentication Certificates issued MUST NOT have a Validity Period greater than 90 days. Subordinate CA Certificates issued MUST NOT have a Validity Period greater than 1096 days.
+| 2025-09-15 | Section 4 | CAs SHOULD NOT rely on non-automatable and soon-to-be retired domain validation methods.
+| 2026-04-15 | Section 4 | CAs MUST NOT rely on non-automatable domain validation methods.
+| 2026-04-15 | Section 7 (and others) | TLS Server Authentication Certificates issued MUST NOT have a Validity Period greater than 90 days. Subordinate CA Certificates issued MUST NOT have a Validity Period greater than 1096 days.
 
 ## 1.3 PKI Participants
 
@@ -415,6 +418,8 @@ The Definitions found in the CA/Browser Forum's Network and Certificate System S
 **Public Key Infrastructure**: A set of hardware, software, people, procedures, rules, policies, and obligations used to facilitate the trustworthy creation, issuance, management, and use of Certificates and keys based on Public Key Cryptography.
 
 **Publicly-Trusted Certificate**: A Certificate that is trusted by virtue of the fact that its corresponding Root Certificate is distributed as a trust anchor in widely-available application software.
+
+**Published Revocation**: All available servers responsible for providing Online Certificate Status Protocol (OCSP) responses or Certificate Revocation Lists (CRLs) indicate that the certificate in question has been revoked.
 
 **P-Label**: A XN-Label that contains valid output of the Punycode algorithm (as defined in RFC 3492, Section 6.3) from the fifth and subsequent positions.
 
@@ -742,6 +747,8 @@ The CA MAY resend the email, fax, SMS, or postal mail in its entirety, including
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values, in which case the CA MUST follow its CPS.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.3 Phone Contact with Domain Contact
@@ -763,6 +770,8 @@ The Random Value SHALL be unique in each email.
 The email MAY be re-sent in its entirety, including the re-use of the Random Value, provided that its entire contents and recipient SHALL remain unchanged.
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
+
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -807,6 +816,8 @@ This method has been retired and MUST NOT be used.
 
 Confirming the Applicant's control over the FQDN by validating the Applicant is the Domain Contact. This method may only be used if the CA is also the Domain Name Registrar, or an Affiliate of the Registrar, of the Base Domain Name.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.13 Email to DNS CAA Contact
@@ -817,6 +828,8 @@ Each email MAY confirm control of multiple FQDNs, provided that each email addre
 
 The Random Value SHALL be unique in each email. The email MAY be re-sent in its entirety, including the re-use of the Random Value, provided that its entire contents and recipient(s) SHALL remain unchanged. The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.14 Email to DNS TXT Contact
@@ -826,6 +839,8 @@ Confirming the Applicant's control over the FQDN by sending a Random Value via e
 Each email MAY confirm control of multiple FQDNs, provided that each email address is DNS TXT Record Email Contact for each Authorization Domain Name being validated. The same email MAY be sent to multiple recipients as long as all recipients are DNS TXT Record Email Contacts for each Authorization Domain Name being validated.
 
 The Random Value SHALL be unique in each email. The email MAY be re-sent in its entirety, including the re-use of the Random Value, provided that its entire contents and recipient(s) SHALL remain unchanged. The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
+
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -839,6 +854,8 @@ In the event of reaching voicemail, the CA may leave the Random Value and the AD
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026.
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.16 Phone Contact with DNS TXT Record Phone Contact
@@ -851,6 +868,8 @@ In the event of reaching voicemail, the CA may leave the Random Value and the AD
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
 ##### 3.2.2.4.17 Phone Contact with DNS CAA Phone Contact
@@ -862,6 +881,8 @@ The CA MUST NOT be transferred or request to be transferred as this phone number
 In the event of reaching voicemail, the CA may leave the Random Value and the ADN(s) being validated. The Random Value MUST be returned to the CA to approve the request.
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
+
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -955,6 +976,8 @@ The CA MAY resend the email, fax, SMS, or postal mail in its entirety, including
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values, in which case the CA MUST follow its CPS.
 
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+
 ##### 3.2.2.5.3 Reverse Address Lookup
 
 Confirming the Applicant’s control over the IP Address by obtaining a Domain Name associated with the IP Address through a reverse-IP lookup on the IP Address and then verifying control over the FQDN using a method permitted under [Section 3.2.2.4](#3224-validation-of-domain-authorization-or-control).
@@ -974,6 +997,8 @@ In the event that someone other than an IP Address Contact is reached, the CA MA
 In the event of reaching voicemail, the CA may leave the Random Value and the IP Address(es) being validated. The Random Value MUST be returned to the CA to approve the request.
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
+
+This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
 
 ##### 3.2.2.5.6 ACME “http-01” method for IP Addresses
 
@@ -1277,11 +1302,11 @@ The Issuing CA SHALL revoke a Subordinate CA Certificate within seven (7) days i
 
 ### 4.9.2 Who can request revocation
 
-The Subscriber, RA, or Issuing CA can initiate revocation. Additionally, Subscribers, Relying Parties, Application Software Suppliers, and other third parties may submit Certificate Problem Reports informing the issuing CA of reasonable cause to revoke the certificate.
+The Subscriber, RA, or Issuing CA can initiate revocation. Additionally, Subscribers, Relying Parties, Application Software Suppliers, and other third parties may submit Certificate Problem Reports informing the issuing CA of reasonable cause to revoke the certificate. A CA becoming aware of confirmed or otherwise suspected circumstances that might neccessitate revocation, either triggered by the use of linting tools or other discovered via internal CA processes (e.g., self-audits) should be treated the same as a third party Certificate Problem Report.
 
 ### 4.9.3 Procedure for revocation request
 
-The CA SHALL provide a process for Subscribers to request revocation of their own Certificates. The process MUST be described in the CA's Certificate Policy or Certification Practice Statement. The CA SHALL maintain a continuous 24x7 ability to accept and respond to revocation requests and Certificate Problem Reports.
+The CA SHALL provide a process for Subscribers to request revocation of their own Certificates. The process MUST be described in the CA's Certificate Policy or Certification Practice Statement. The CA SHALL maintain a continuous 24x7 ability to accept and respond to revocation requests and Certificate Problem Reports. 
 
 The CA SHALL provide Subscribers, Relying Parties, Application Software Suppliers, and other third parties with clear instructions for reporting suspected Private Key Compromise, Certificate misuse, or other types of fraud, compromise, misuse, inappropriate conduct, or any other matter related to Certificates. The CA SHALL publicly disclose the instructions through a readily accessible online means and in Section 1.5.2 of their CPS.
 
@@ -1291,14 +1316,20 @@ No stipulation.
 
 ### 4.9.5 Time within which CA must process the revocation request
 
-Within 24 hours after receiving a Certificate Problem Report, the CA SHALL investigate the facts and circumstances related to a Certificate Problem Report and provide a preliminary report on its findings to both the Subscriber and the entity who filed the Certificate Problem Report.
-After reviewing the facts and circumstances, the CA SHALL work with the Subscriber and any entity reporting the Certificate Problem Report or other revocation-related notice to establish whether or not the certificate will be revoked, and if so, a date which the CA will revoke the certificate. The period from receipt of the Certificate Problem Report or revocation-related notice to published revocation MUST NOT exceed the time frame set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate). The date selected by the CA SHOULD consider the following criteria:
+Within 24 hours after receiving a Certificate Problem Report, the CA SHALL investigate the facts and circumstances related to a Certificate Problem Report and provide a preliminary report on its findings to both the Subscriber and the entity who filed the Certificate Problem Report. A Certificate Problem Report is considered "actionable" if it includes:
+- either certificate serial number or hashes of at least one certificate affected by issue subject of the Certificate Problem Report, and
+- a description of how the certificate(s) in question violates these requirements or a CAs own policies.
+
+After reviewing the facts and circumstances, the CA SHALL work with the Subscriber and any entity reporting an actionable Certificate Problem Report or other revocation-related notice to establish whether or not the certificate will be revoked, and if so, a date which the CA will revoke the certificate(s). The period from receipt of the actionable Certificate Problem Report or revocation-related notice to published revocation MUST NOT exceed the time frame set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate).  The date selected by the CA SHOULD consider the following criteria:
 
 1. The nature of the alleged problem (scope, context, severity, magnitude, risk of harm);
 2. The consequences of revocation (direct and collateral impacts to Subscribers and Relying Parties);
 3. The number of Certificate Problem Reports received about a particular Certificate or Subscriber;
 4. The entity making the complaint (for example, a complaint from a law enforcement official that a Web site is engaged in illegal activities should carry more weight than a complaint from a consumer alleging that they didn't receive the goods they ordered); and
 5. Relevant legislation.
+
+Unless the CA corroborates evidence that affirmatively concludes revocation is not required, the CA MUST proceed with revocation and in doing so MUST NOT exceed the revocation time frames set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate).
+
 
 ### 4.9.6 Revocation checking requirement for relying parties
 
@@ -1327,7 +1358,6 @@ CAs issuing CA Certificates:
 CAs MUST continue issuing CRLs until one of the following is true:
 - all Subordinate CA Certificates containing the same Subject Public Key are expired or revoked; OR
 - the corresponding Subordinate CA Private Key is destroyed.
-
 
 ### 4.9.8 Maximum latency for CRLs (if applicable)
 

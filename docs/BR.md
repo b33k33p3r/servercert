@@ -199,9 +199,9 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 
 | 2025-09-15     | Section 4 (and others)    | CAs SHOULD NOT rely on non-automatable and soon-to-be retired domain validation methods. Sunset unrestricted Subordinate CA profiles.                                                                                                                                                                                                                                                                                                                    |
 | 2026-04-15     | Section 4                 | CAs MUST NOT rely on non-automatable domain validation methods.
-                                                                                                                                                                                                      |
+                                                                                                                                                                                                                                                                                                  |
 | 2026-04-15     | Section 7 (and others)    | TLS Server Authentication Certificates issued MUST NOT have a Validity Period greater than 90 days. Subordinate CA Certificates issued MUST NOT have a 
-Validity Period greater than 1096 days.                                                                                                                                                               |
+Validity Period greater than 1096 days.                                                     |
 
 ## 1.3 PKI Participants
 

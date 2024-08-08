@@ -742,7 +742,9 @@ The CA MAY resend the email, fax, SMS, or postal mail in its entirety, including
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values, in which case the CA MUST follow its CPS.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -766,7 +768,9 @@ The email MAY be re-sent in its entirety, including the re-use of the Random Val
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -811,7 +815,9 @@ This method has been retired and MUST NOT be used.
 
 Confirming the Applicant's control over the FQDN by validating the Applicant is the Domain Contact. This method may only be used if the CA is also the Domain Name Registrar, or an Affiliate of the Registrar, of the Base Domain Name.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026.
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -823,7 +829,9 @@ Each email MAY confirm control of multiple FQDNs, provided that each email addre
 
 The Random Value SHALL be unique in each email. The email MAY be re-sent in its entirety, including the re-use of the Random Value, provided that its entire contents and recipient(s) SHALL remain unchanged. The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -835,7 +843,9 @@ Each email MAY confirm control of multiple FQDNs, provided that each email addre
 
 The Random Value SHALL be unique in each email. The email MAY be re-sent in its entirety, including the re-use of the Random Value, provided that its entire contents and recipient(s) SHALL remain unchanged. The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -849,7 +859,9 @@ In the event of reaching voicemail, the CA may leave the Random Value and the AD
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -863,7 +875,9 @@ In the event of reaching voicemail, the CA may leave the Random Value and the AD
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -877,7 +891,9 @@ In the event of reaching voicemail, the CA may leave the Random Value and the AD
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 **Note**: Once the FQDN has been validated using this method, the CA MAY also issue Certificates for other FQDNs that end with all the Domain Labels of the validated FQDN. This method is suitable for validating Wildcard Domain Names.
 
@@ -971,7 +987,9 @@ The CA MAY resend the email, fax, SMS, or postal mail in its entirety, including
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values, in which case the CA MUST follow its CPS.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 ##### 3.2.2.5.3 Reverse Address Lookup
 
@@ -993,7 +1011,9 @@ In the event of reaching voicemail, the CA may leave the Random Value and the IP
 
 The Random Value SHALL remain valid for use in a confirming response for no more than 30 days from its creation. The CPS MAY specify a shorter validity period for Random Values.
 
-This method SHOULD NOT be used after September 14, 2025, and MUST NOT be used after April 14, 2026. 
+Effective 2025-09-15, this method SHOULD NOT be used.
+
+Effective 2026-04-15, this method MUST NOT be used. 
 
 ##### 3.2.2.5.6 ACME “http-01” method for IP Addresses
 

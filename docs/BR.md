@@ -1327,7 +1327,7 @@ The Issuing CA SHALL revoke a Subordinate CA Certificate within seven (7) days i
 
 ### 4.9.2 Who can request revocation
 
-The Subscriber, RA, or Issuing CA can initiate revocation. Additionally, Subscribers, Relying Parties, Application Software Suppliers, and other third parties may submit Certificate Problem Reports informing the issuing CA of reasonable cause to revoke the certificate. A CA independently becoming aware of confirmed or suspected circumstances that might neccessitate revocation, either triggered by the use of linting tools or other discovered via internal CA processes (e.g., self-audits) should be treated the same as a third party Certificate Problem Report.
+The Subscriber, RA, or Issuing CA can initiate revocation. Additionally, Subscribers, Relying Parties, Application Software Suppliers, and other third parties may submit Certificate Problem Reports informing the issuing CA of reasonable cause to revoke the certificate. A CA, independently becoming aware of confirmed or suspected circumstances that might necessitate revocation, either triggered by the use of Linting tools or otherwise discovered via internal CA processes (e.g., self-audits), SHOULD be treated the same as the receipt of a Certificate Problem Report.
 
 ### 4.9.3 Procedure for revocation request
 
@@ -1344,10 +1344,10 @@ No stipulation.
 Within 24 hours after receiving a Certificate Problem Report, the CA SHALL investigate the facts and circumstances related to the report and provide a preliminary report on its findings to both the Subscriber(s) and the entity who filed the Certificate Problem Report.
 
 A Certificate Problem Report is considered "actionable" if it includes:
-- either certificate serial number(s) or hash(es) of at least one certificate affected by issue subject of the Certificate Problem Report, and
-- a description of how the certificate(s) in question violates these requirements or a CAs own policies or otherwise must be revoked.
+- either certificate serial number(s) or hash(es) of at least one certificate affected by the issue subject of the Certificate Problem Report, and
+- a description of how the certificate(s) in question violates these requirements or a CAs own policies or otherwise why it must be revoked.
 
-After reviewing the facts and circumstances of a Certificate Problem Report, the CA SHALL work with the Subscriber and any entity reporting the actionable Certificate Problem Report or other revocation-related notice to establish whether or not the certificate will be revoked, and if so, a date which the CA will revoke the certificate. The period from receipt of the actionable Certificate Problem Report or revocation-related notice to published revocation MUST NOT exceed the time frame set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate). The date selected by the CA SHOULD consider the following criteria:
+After reviewing the facts and circumstances of a Certificate Problem Report, the CA SHALL work with the Subscriber and any entity reporting the actionable Certificate Problem Report or other revocation-related notice to establish whether or not the certificate will be revoked, and if so, a date which the CA will revoke the certificate. The period from receipt of the actionable Certificate Problem Report or revocation-related notice to published revocation MUST NOT exceed the time frame set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate). The date selected by the CA SHOULD consider the following criteria and be recorded in writing:
 
 1. The nature of the alleged problem (scope, context, severity, magnitude, risk of harm);
 2. The consequences of revocation (direct and collateral impacts to Subscribers and Relying Parties);

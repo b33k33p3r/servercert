@@ -196,11 +196,8 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 2024-09-15     | 4.3.1.2                   | The CA SHOULD implement a Linting process to test the technical conformity of the to-be-issued Certificate with these Requirements.                                                                                                                                                                                                                                                                                                                      |
 | 2025-03-15     | 4.3.1.2                   | The CA SHALL implement a Linting process to test the technical conformity of the to-be-issued Certificate with these Requirements.                                                                                                                                                                                                                                                                                                                       |
 | 2025-03-15     | 8.7                       | The CA SHOULD use a Linting process to test the technical accuracy of already issued Certificates against the sample set chosen for Self-Audits.                                                                                                                                                                                                                                                                                                         |
-| 2025-09-15     | Section 4 (and others)    | CAs SHOULD NOT rely on non-automatable and soon-to-be retired domain validation methods. Sunset unrestricted Subordinate CA profiles.                                                                                                                                                                                                                                                                                                                    |
-| 2026-04-15     | Section 4                 | CAs MUST NOT rely on non-automatable domain validation methods.
-                                                                                                                                                                                                                                                                                                  |
-| 2026-04-15     | Section 7 (and others)    | TLS Server Authentication Certificates issued MUST NOT have a Validity Period greater than 90 days. Subordinate CA Certificates issued MUST NOT have a 
-Validity Period greater than 1096 days.                                                     |
+| 2025-09-15     | Sections 4, 7, and others | CAs SHOULD NOT rely on non-automatable and soon-to-be retired domain validation methods. Sunset unrestricted Subordinate CA profiles. Subscriber Certificates SHOULD NOT have a Validity Period greater than 90 days. Subordinate CA Certificates issued SHOULD NOT have a Validity Period greater than 1096 days.                                                                                                                                                                                                                                                                                                                                       |
+| 2026-04-15     | Sections 4, 7, and others | CAs MUST NOT rely on non-automatable domain validation methods. TLS Server Authentication Certificates issued MUST NOT have a Validity Period greater than 90 days. Subordinate CA Certificates issued MUST NOT have a Validity Period greater than 1096 days.                                                                                                                                                                                                                                                                                                                                                                                                |
 
 ## 1.3 PKI Participants
 
@@ -2005,8 +2002,7 @@ Before issuing a Cross-Certified Subordinate CA, the Issuing CA MUST confirm tha
 | __Field__   | __Minimum__ | __Maximum__ |
 | --          | ----        | ----        |
 | `notBefore` | The earlier of one day prior to the time of signing or the earliest `notBefore` date of the existing CA Certificate(s) | The time of signing |
-| `notAfter`  | The time of signing | The time of signing plus 1096 days |
-
+| `notAfter`  | The time of signing | Effective 2025-09-15, the value SHOULD NOT exceed the time of signing + 1096 days. Effective 2026-04-15, the value MUST NOT exceed the time of signing plus 1096 days.  |
 ##### 7.1.2.2.2 Cross-Certified Subordinate CA Naming
 
 The `subject` MUST comply with the requirements of [Section 7.1.4](#714-name-forms), or, if the existing CA Certificate was issued in compliance with the then-current version of the Baseline Requirements, the encoded `subject` name MUST be byte-for-byte identical to the encoded `subject` name of the existing CA Certificate.
@@ -2388,7 +2384,7 @@ If the Issuing CA does not directly sign OCSP responses, it MAY make use of an O
 | __Field__   | __Minimum__                          | __Maximum__ |
 | --          | ----                                 | ----        |
 | `notBefore` | One day prior to the time of signing | The time of signing |
-| `notAfter`  | The time of signing | The time of signing plus 1096 days |
+| `notAfter`  | The time of signing | Effective 2025-09-15, the value SHOULD NOT exceed the time of signing + 1096 days. Effective 2026-04-15, the value MUST NOT exceed the time of signing plus 1096 days.  |
 
 ##### 7.1.2.8.2 OCSP Responder Extensions
 
@@ -2589,7 +2585,7 @@ This section contains several fields that are common among multiple CA Certifica
 | __Field__   | __Minimum__ | __Maximum__ |
 | --          | ----        | ----        |
 | `notBefore` | One day prior to the time of signing | The time of signing |
-| `notAfter`  | The time of signing | The time of signing plus 1096 days |
+| `notAfter`  | The time of signing | Effective 2025-09-15, the value SHOULD NOT exceed the time of signing + 1096 days. Effective 2026-04-15, the value MUST NOT exceed the time of signing plus 1096 days.  |
 
 ##### 7.1.2.10.2 CA Certificate Naming
 

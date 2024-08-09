@@ -1865,6 +1865,10 @@ The CA SHALL protect its Private Key in a system or device that has been validat
 
 ### 6.2.9 Deactivating Private Keys
 
+Private Keys corresponding with certificates issued in accordance with [Section 7.1.2.6 - TLS Subordinate CA Certificate Profile](#7126-tls-subordinate-ca-certificate-profile) MUST NOT be used to sign new Certificates after 1096 days of first signing a Certificate.
+
+Private Keys corresponding with certificates issued in accordance with [Section 7.1.2.8 - OCSP Responder Certificate Profile](#7128-ocsp-responder-certificate-profile) MUST NOT be used to sign new OCSP Responses after 1096 days of first signing an OCSP Response.
+
 ### 6.2.10 Destroying Private Keys
 
 ### 6.2.11 Cryptographic Module Rating

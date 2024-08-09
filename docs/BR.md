@@ -1378,10 +1378,9 @@ Within twenty-four (24) hours after determining a Certificate Problem Report is 
      - Relevant legislation.
 
 Within twenty-four (24) hours after determining a Certificate Problem Report is NOT actionable:
-1. The CA SHOULD provide a preliminary report on its findings to the entity who filed the report and request the information necessary to satisfy the above requirements of an actionable Certificate Problem Report.
-
-Within seventy-two (72) hours after determining a Certificate Problem Report is NOT actionable:
 1. The CA MUST provide a preliminary report on its findings to the entity who filed the report and request the information necessary to satisfy the above requirements of an actionable Certificate Problem Report.
+
+[**todo** something like within 120 hours of receiving a report, the CA should evaluate its entire time valid corpus for all certs affected by the same  problem. revocation clock starts on detecting certificate / serial.] 
   
 **Note**: If a non-actionable Certificate Problem Report is later amended by the reporter to satisfy the requirements of an actionable report described above, the time of receipt of the requested missing information is the basis for subsequent revocation timelines, if determined necessary.
 

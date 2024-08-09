@@ -1357,13 +1357,17 @@ No stipulation.
 
 ### 4.9.5 Time within which CA must process the revocation request
 
-Within 24 hours after receiving a Certificate Problem Report, the CA SHALL investigate the facts and circumstances related to the report and provide a preliminary report on its findings to both the Subscriber(s) and the entity who filed the Certificate Problem Report.
+Within 24 hours after receiving a Certificate Problem Report, the CA SHALL investigate the facts and circumstances related to the report and determine if it's "actionanable."
 
 A Certificate Problem Report is considered "actionable" if it includes:
-- either certificate serial number(s) or hash(es) of at least one certificate affected by the issue subject of the Certificate Problem Report, and
-- a description of how the certificate(s) in question violates these requirements or a CAs own policies or otherwise why it must be revoked.
+- either Certificate serial number(s) or hash(es) of at least one Certificate affected by the issue subject of the Certificate Problem Report,
 
-After reviewing the facts and circumstances of a Certificate Problem Report, the CA SHALL work with the Subscriber and any entity reporting the actionable Certificate Problem Report or other revocation-related notice to establish whether or not the certificate will be revoked, and if so, a date which the CA will revoke the certificate. The period from receipt of the actionable Certificate Problem Report or revocation-related notice to published revocation MUST NOT exceed the time frame set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate). The date selected by the CA SHOULD consider the following criteria and be recorded in writing:
+  and, either:
+  
+- a description of how the Certificate(s) in question violates these requirements or a CA's own policies, OR
+- a reason neccessitating certificate revocation (e.g., a demonstration of key compromise, or a valid subscriber request).
+
+Within 24 hours after determining a Certificate Problem Report is actionable, the CA SHALL provide a preliminary report on its findings to both the Subscriber(s) and the entity who filed the Certificate Problem Report. The CA SHALL work with the Subscriber and any entity reporting the actionable Certificate Problem Report or other revocation-related notice to establish whether or not the certificate will be revoked, and if so, a date which the CA will revoke the certificate. The period from the time the report was determined actionable to published revocation MUST NOT exceed the time frame set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate). The date selected by the CA SHOULD consider the following criteria and be recorded in writing:
 
 1. The nature of the alleged problem (scope, context, severity, magnitude, risk of harm);
 2. The consequences of revocation (direct and collateral impacts to Subscribers and Relying Parties);
@@ -1371,7 +1375,7 @@ After reviewing the facts and circumstances of a Certificate Problem Report, the
 4. The entity making the complaint (for example, a complaint from a law enforcement official that a Web site is engaged in illegal activities should carry more weight than a complaint from a consumer alleging that they didn't receive the goods they ordered); and
 5. Relevant legislation.
 
-Unless the CA obtains evidence that affirmatively concludes revocation is not required, the CA MUST proceed with revocation and in doing so MUST NOT exceed the revocation time frames set forth in [Section 4.9.1.1](#4911-reasons-for-revoking-a-subscriber-certificate).
+Within 24 hours after determining a Certificate Problem Report is NOT actionable, the CA SHOULD provide a preliminary report on its findings to the entity who filed the Certificate Problem Report, requesting the missing information to allow the report to become an actionable Certificate Problem Report, but MUST do so within 72 hours. If a non-actionable Certificate Problem Report is later amended by the reporter to satisfy the requirements of an actionable report described above, the time which the report became actionable is the basis for subsequent revocation timelines, if determined necessary.  
 
 ### 4.9.6 Revocation checking requirement for relying parties
 

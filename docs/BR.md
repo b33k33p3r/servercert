@@ -1365,7 +1365,7 @@ A Certificate Problem Report is considered actionable if it includes:
      - how the Certificate(s) in question violates these Requirements or a CA's own policies; OR
      - a reason for Certificate revocation (e.g., a demonstration of key compromise, or a valid subscriber request).
 
-A CA MAY take precautionary steps to prevent submission of non-actionable Certificate Problem Reports (e.g., input control validation on a form used to collect Certificate Problem Reports).
+A CA MAY take precautionary measures to prevent submission of non-actionable Certificate Problem Reports (e.g., input control validation on a form used to collect Certificate Problem Reports).
 
 Within 24 hours after determining a Certificate Problem Report is actionable:
 1. The CA SHALL provide a preliminary report on its findings to both the Subscriber(s) and the entity who filed the Certificate Problem Report.
